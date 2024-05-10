@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/getoutreach/gobox/pkg/secrets"
+	"github.com/grevych/gobox/pkg/secrets"
 )
 
 // Secret provides access to secret config.

@@ -1,7 +1,7 @@
 // Copyright 2022 Outreach Corporation. All Rights Reserved.
 
-//go:build or_dev || or_test || or_e2e
-// +build or_dev or_test or_e2e
+//go:build gobox_dev || gobox_test || gobox_e2e
+// +build gobox_dev gobox_test gobox_e2e
 
 // Description: Provides configuration readers for various environments
 
@@ -14,8 +14,8 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/cfg"
 	"gopkg.in/yaml.v3"
 )
 

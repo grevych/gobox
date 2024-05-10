@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/async"
-	"github.com/getoutreach/gobox/pkg/async/pool"
+	"github.com/grevych/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/async/pool"
 )
 
 //nolint:unparam

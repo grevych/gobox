@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/getoutreach/gobox/internal/logf"
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/metrics"
+	"github.com/grevych/gobox/internal/logf"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/metrics"
 )
 
 // Type tracks the type of call being made.

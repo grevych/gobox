@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/box"
+	"github.com/grevych/gobox/pkg/box"
 	logtest "github.com/sirupsen/logrus/hooks/test"
 	"gotest.tools/v3/assert"
 	"gotest.tools/v3/assert/cmp"

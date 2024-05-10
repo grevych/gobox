@@ -16,10 +16,10 @@ import (
 )
 
 // defaultVersion is the default version string
-const defaultVersion = "Please see http://github.com/getoutreach/gobox/blob/main/docs/version.md"
+const defaultVersion = "Please see http://github.com/grevych/gobox/blob/main/docs/version.md"
 
 // Version needs to be set at build time using
-// -ldflags "-X github.com/getoutreach/gobox/pkg/app.Version=something"
+// -ldflags "-X github.com/grevych/gobox/pkg/app.Version=something"
 //
 //nolint:gochecknoglobals // Why: For linking
 var Version = defaultVersion

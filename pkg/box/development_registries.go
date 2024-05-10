@@ -3,7 +3,7 @@
 // Description: This file contains development registry configuration
 package box
 
-import "github.com/getoutreach/gobox/pkg/region"
+import "github.com/grevych/gobox/pkg/region"
 
 // DevelopmentRegistries contains a slice of DevelopmentRegistrys
 type DevelopmentRegistries struct {

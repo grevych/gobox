@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/async"
-	"github.com/getoutreach/gobox/pkg/async/pool"
-	"github.com/getoutreach/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/async/pool"
+	"github.com/grevych/gobox/pkg/orerr"
 	"gotest.tools/v3/assert"
 )
 

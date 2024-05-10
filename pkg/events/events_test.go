@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package events_test
 
@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/log"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/log"
 )
 
 type eventsSuite struct{}

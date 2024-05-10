@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/getoutreach/gobox/pkg/cli/updater/resolver"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/cli/updater/resolver"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"gotest.tools/v3/assert"

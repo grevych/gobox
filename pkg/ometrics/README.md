@@ -1,7 +1,7 @@
 # ometrics
 
 ```go
-import "github/getoutreach/gobox/pkg/ometrics"
+import "github/grevych/gobox/pkg/ometrics"
 ```
 
 Package ometrics implements a small wrapper around working with the OpenTelemetry (otel) metrics package. It does not provide any wrappers around the core types provided by otel, but instead provides a way to instantiate them.
@@ -31,7 +31,7 @@ The below code demonstrates how to initialize the `prometheus` provider using th
 import (
     "context"
 
-    "github.com/getoutreach/gobox/pkg/ometrics"
+    "github.com/grevych/gobox/pkg/ometrics"
 )
 
 func main() {
@@ -59,7 +59,7 @@ In order to setup instruments on which metrics may be recorded, a meter is first
 import (
     "context"
 
-    "github.com/getoutreach/gobox/pkg/ometrics"
+    "github.com/grevych/gobox/pkg/ometrics"
     "go.opentelemetry.io/otel/metric"
 )
 
@@ -87,7 +87,7 @@ func createPackageMeter() {
 import (
     "context"
 
-    "github.com/getoutreach/gobox/pkg/ometrics"
+    "github.com/grevych/gobox/pkg/ometrics"
     "go.opentelemetry.io/otel/metric"
 )
 
@@ -170,7 +170,7 @@ import (
     "context"
     "time.Time"
 
-    "github.com/getoutreach/gobox/pkg/ometrics"
+    "github.com/grevych/gobox/pkg/ometrics"
     "go.opentelemetry.io/otel/metric"
 )
 
@@ -228,7 +228,7 @@ func ReportExampleLatency(subject, operation string, err error, d time.Duration)
 }
 ```
 
-## func [InitializeMeterProvider](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/ometrics.go#L45>)
+## func [InitializeMeterProvider](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/ometrics.go#L45>)
 
 ```go
 func InitializeMeterProvider(ctx context.Context, t ExporterType, opts ...Option) error
@@ -236,7 +236,7 @@ func InitializeMeterProvider(ctx context.Context, t ExporterType, opts ...Option
 
 InitializeMeterProvider initializes the global meter provider to be backed by the provided exporter.
 
-## type [CollectorConfig](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/config.go#L19-L23>)
+## type [CollectorConfig](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/config.go#L19-L23>)
 
 CollectorConfig contains configuration for creating a ExporterTypeCollector exporter through InitializeMeterProvider.
 
@@ -248,7 +248,7 @@ type CollectorConfig struct {
 }
 ```
 
-## type [Config](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/config.go#L11-L15>)
+## type [Config](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/config.go#L11-L15>)
 
 Config is the configuration for a meter provider created by this package. This is meant to be used by InitializeMeterProvider.
 
@@ -260,7 +260,7 @@ type Config struct {
 }
 ```
 
-## type [ExporterType](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/ometrics.go#L27>)
+## type [ExporterType](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/ometrics.go#L27>)
 
 ExporterType denotes the type of exporter to use for metrics.
 
@@ -285,7 +285,7 @@ const (
 )
 ```
 
-## type [Option](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/config.go#L26>)
+## type [Option](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/config.go#L26>)
 
 Option is a function that sets a configuration value.
 
@@ -293,7 +293,7 @@ Option is a function that sets a configuration value.
 type Option func(c *Config)
 ```
 
-### func [WithConfig](<https://github.com/getoutreach/gobox/blob/main/pkg/ometrics/config.go#L30>)
+### func [WithConfig](<https://github.com/grevych/gobox/blob/main/pkg/ometrics/config.go#L30>)
 
 ```go
 func WithConfig(c Config) Option

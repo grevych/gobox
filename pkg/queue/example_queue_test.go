@@ -6,7 +6,7 @@ package queue_test
 import (
 	"fmt"
 
-	"github.com/getoutreach/gobox/pkg/queue"
+	"github.com/grevych/gobox/pkg/queue"
 )
 
 func ExamplePriorityQueue() {

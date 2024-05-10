@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 	"go.opentelemetry.io/otel/attribute"
 )
 

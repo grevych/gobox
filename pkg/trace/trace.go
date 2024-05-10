@@ -18,7 +18,7 @@
 //	     ... main app logic ...
 //	}
 //
-// See https://github.com/getoutreach/gobox/blob/master/cmd/example/main.go.
+// See https://github.com/grevych/gobox/blob/master/cmd/example/main.go.
 //
 // # Servers and incoming requests
 //
@@ -100,8 +100,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/log"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 

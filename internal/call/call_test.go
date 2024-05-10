@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/internal/call"
-	"github.com/getoutreach/gobox/internal/logf"
-	"github.com/getoutreach/gobox/pkg/differs"
+	"github.com/grevych/gobox/internal/call"
+	"github.com/grevych/gobox/internal/logf"
+	"github.com/grevych/gobox/pkg/differs"
 	"github.com/prometheus/client_golang/prometheus"
 	"gotest.tools/v3/assert"
 )

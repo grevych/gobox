@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package log_test
 
@@ -8,9 +8,9 @@ import (
 
 	"gotest.tools/v3/assert"
 
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/log/logtest"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log/logtest"
 )
 
 type callerSuite struct{}

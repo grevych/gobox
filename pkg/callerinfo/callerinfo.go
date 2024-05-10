@@ -13,13 +13,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/getoutreach/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/app"
 )
 
 // CallerInfo holds basic information about a call site:
 // Function is a long form module+function name that looks like:
 // * main.main for your own main function
-// * github.com/getoutreach/gobox/pkg/callerinfo.Test_Callers for a module function
+// * github.com/grevych/gobox/pkg/callerinfo.Test_Callers for a module function
 // File is the file path of the call site
 // LineNum is the line number inside that File of the call site
 // Module is a best-effort attempt to get the module name for the call site (i.e. github.com/getoutreach/gobox)
@@ -138,7 +138,7 @@ func calculateModule(funcName string) string {
 	return strings.Join(splits, "/")
 }
 
-// The function name looks like "github.com/getoutreach/gobox/pkg/callerinfo.Test_Callers", so parse the
+// The function name looks like "github.com/grevych/gobox/pkg/callerinfo.Test_Callers", so parse the
 // package name out of the base
 func parsePackageName(funcName string) string {
 	// Find the last segment of the URL path

@@ -6,7 +6,7 @@ package adapters
 import (
 	"context"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 	"github.com/hashicorp/go-retryablehttp"
 )
 

@@ -8,8 +8,8 @@
 package metrics
 
 import (
-	"github.com/getoutreach/gobox/pkg/orerr"
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/statuscodes"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )

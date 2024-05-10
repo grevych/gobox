@@ -8,7 +8,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 

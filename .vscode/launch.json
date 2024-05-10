@@ -12,7 +12,7 @@
       "envFile": "${workspaceRoot}/.vscode/private.env",
       "go.testEnvFile": "${workspaceRoot}/.vscode/private.env",
       "program": "${workspaceRoot}/cmd/gobox/",
-      "buildFlags": "-tags=or_dev"
+      "buildFlags": "-tags=gobox_dev"
     },
     {
       "name": "Attach to dev container",

@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/getoutreach/gobox/internal/call"
+	"github.com/grevych/gobox/internal/call"
 )
 
 // CallOptions contains options for all tracing calls. See

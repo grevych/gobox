@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package trace_test
 
@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/trace"
-	"github.com/getoutreach/gobox/pkg/trace/tracetest"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/trace"
+	"github.com/grevych/gobox/pkg/trace/tracetest"
 	"gotest.tools/v3/assert"
 )
 

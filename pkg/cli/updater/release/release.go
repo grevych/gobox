@@ -13,7 +13,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cfg"
 )
 
 // fetcher implements the Fetch method for a VCS provider

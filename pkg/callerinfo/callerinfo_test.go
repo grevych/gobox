@@ -9,14 +9,14 @@ import (
 
 func Test_ParsePackageName(t *testing.T) {
 	assert.Equal(t,
-		parsePackageName("github.com/getoutreach/gobox/pkg/foobar"),
-		"github.com/getoutreach/gobox/pkg/foobar")
+		parsePackageName("github.com/grevych/gobox/pkg/foobar"),
+		"github.com/grevych/gobox/pkg/foobar")
 	assert.Equal(t,
-		parsePackageName("github.com/getoutreach/gobox/pkg/callerinfo.Test_Callers"),
-		"github.com/getoutreach/gobox/pkg/callerinfo")
+		parsePackageName("github.com/grevych/gobox/pkg/callerinfo.Test_Callers"),
+		"github.com/grevych/gobox/pkg/callerinfo")
 	assert.Equal(t,
-		parsePackageName("github.com/getoutreach/gobox/pkg/log.logger.Info"),
-		"github.com/getoutreach/gobox/pkg/log")
+		parsePackageName("github.com/grevych/gobox/pkg/log.logger.Info"),
+		"github.com/grevych/gobox/pkg/log")
 
 	assert.Equal(t,
 		parsePackageName("sdfdsfsed"),
@@ -28,8 +28,8 @@ func Test_Callers(t *testing.T) {
 
 	ci, err := GetCallerInfo(0)
 	assert.NilError(t, err)
-	assert.Equal(t, ci.Package, "github.com/getoutreach/gobox/pkg/callerinfo")
-	assert.Equal(t, ci.Function, "github.com/getoutreach/gobox/pkg/callerinfo.Test_Callers")
+	assert.Equal(t, ci.Package, "github.com/grevych/gobox/pkg/callerinfo")
+	assert.Equal(t, ci.Function, "github.com/grevych/gobox/pkg/callerinfo.Test_Callers")
 	assert.Check(t, strings.HasSuffix(ci.File, "callerinfo_test.go"))
 	assert.Check(t, ci.LineNum > 0)
 	assert.Equal(t, ci.Module, "github.com/getoutreach/gobox")
@@ -40,7 +40,7 @@ func Test_Callers(t *testing.T) {
 
 	ci2, err2 := testhelper1()
 	assert.NilError(t, err2)
-	assert.Equal(t, ci2.Function, "github.com/getoutreach/gobox/pkg/callerinfo.Test_Callers")
+	assert.Equal(t, ci2.Function, "github.com/grevych/gobox/pkg/callerinfo.Test_Callers")
 
 	// Same result, but different call site, so will be a new PC->Function lookup
 	assert.Equal(t, len(moduleLookupByPC), 2)

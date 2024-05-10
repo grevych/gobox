@@ -7,7 +7,7 @@ package pool
 import (
 	"context"
 
-	"github.com/getoutreach/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/async"
 )
 
 type SchedulerFunc func(ctx context.Context, r async.Runner) error
@@ -23,6 +23,6 @@ type Scheduler interface {
 	// https://pkg.go.dev/github.com/sourcegraph/conc/pool instead.
 	// Replaces calls to Schedule with (*Pool).Go().  For more information,
 	// see the README:
-	// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+	// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 	Schedule(ctx context.Context, r async.Runner) error
 }

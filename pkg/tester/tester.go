@@ -64,7 +64,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 )
 
 // Run is a polymorphic function where t is either *testing.T or tester.T.

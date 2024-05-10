@@ -6,7 +6,7 @@ package orerr
 import (
 	"fmt"
 
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 // Violation describe particular input violation. It might be field and domain specific.

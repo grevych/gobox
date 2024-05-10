@@ -7,7 +7,7 @@ package orerr
 import (
 	"errors"
 
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 type StatusCodeWrapper struct {

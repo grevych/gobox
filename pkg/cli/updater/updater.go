@@ -19,13 +19,13 @@ import (
 	"github.com/Masterminds/semver/v3"
 	"github.com/briandowns/spinner"
 	"github.com/fynelabs/selfupdate"
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/cfg"
-	"github.com/getoutreach/gobox/pkg/cli/github"
-	"github.com/getoutreach/gobox/pkg/cli/updater/archive"
-	"github.com/getoutreach/gobox/pkg/cli/updater/release"
-	"github.com/getoutreach/gobox/pkg/cli/updater/resolver"
-	"github.com/getoutreach/gobox/pkg/exec"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cli/github"
+	"github.com/grevych/gobox/pkg/cli/updater/archive"
+	"github.com/grevych/gobox/pkg/cli/updater/release"
+	"github.com/grevych/gobox/pkg/cli/updater/resolver"
+	"github.com/grevych/gobox/pkg/exec"
 	"github.com/pkg/errors"
 	"github.com/schollz/progressbar/v3"
 	"github.com/sirupsen/logrus"
@@ -37,7 +37,7 @@ import (
 // This is helpful for when using an external package manager, such as brew.
 // This should usually be done with an ldflag:
 //
-//	go run -ldflags "-X github.com/getoutreach/gobox/pkg/cli/updater.Disabled=true" ...
+//	go run -ldflags "-X github.com/grevych/gobox/pkg/cli/updater.Disabled=true" ...
 //
 // or you can do it in main() before UseUpdater is called:
 //
@@ -79,7 +79,7 @@ type updater struct {
 	disabledReason string
 
 	// channel is the channel to use for checking for updates, this corresponds
-	// to a git tag _or_ the pre-release field of versions, e.g. `0.1.0-alpha.1`
+	// to a git tag _gobox_ the pre-release field of versions, e.g. `0.1.0-alpha.1`
 	// would be the channel `alpha`.
 	channel string
 

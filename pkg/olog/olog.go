@@ -16,7 +16,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/getoutreach/gobox/pkg/callerinfo"
+	"github.com/grevych/gobox/pkg/callerinfo"
 )
 
 // New creates a new slog instance that can be used for logging. The

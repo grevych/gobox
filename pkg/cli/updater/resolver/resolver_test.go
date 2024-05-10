@@ -14,9 +14,9 @@ import (
 	"testing"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/getoutreach/gobox/pkg/cfg"
-	"github.com/getoutreach/gobox/pkg/cli/github"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cli/github"
 )
 
 // newTestingVersion is a helper function to create a testing version

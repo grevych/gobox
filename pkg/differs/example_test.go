@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/differs"
-	_ "github.com/getoutreach/gobox/pkg/log"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/differs"
+	_ "github.com/grevych/gobox/pkg/log"
 )
 
 func Example() {

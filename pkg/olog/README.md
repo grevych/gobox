@@ -1,7 +1,7 @@
 # olog
 
 ```go
-import "github/getoutreach/gobox/pkg/olog"
+import "github/grevych/gobox/pkg/olog"
 ```
 
 Package olog implements a lightweight logging library built around the [`slog`](https://pkg.go.dev/log/slog) package. It aims to never mask the core slog.Logger type by default. Provided is a global system for controlling logging levels based on the package and module that a logger was created in, with a system to update the logging level at runtime.
@@ -29,7 +29,7 @@ This package does not provide the ability to ship logs to a remote server, inste
 import (
     "log/slog"
 
-    "github.com/getoutreach/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/olog"
 )
 
 // logger - a package level singleton *slog.Logger instance.
@@ -64,7 +64,7 @@ func getPackageLogger() *slog.Logger {
 
 ```go
 import (
-    "github.com/getoutreach/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/olog"
 )
 
 func helloWorld() {
@@ -81,8 +81,8 @@ import (
     "context"
     "log/slog"
 
-    "github.com/getoutreach/gobox/pkg/olog"
-    "github.com/getoutreach/gobox/pkg/trace"
+    "github.com/grevych/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/trace"
 )
 
 func doSomething(ctx context.Context) {
@@ -118,7 +118,7 @@ import (
     "log/slog"
     "time"
 
-    "github.com/getoutreach/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/olog"
 )
 
 // Create package level default logger.
@@ -192,7 +192,7 @@ func logEveryLevel(ctx context.Context) {
 import (
     "log/slog"
 
-    "github.com/getoutreach/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/olog"
 )
 
 var logger *slog.Logger
@@ -221,7 +221,7 @@ func init() {
 import (
     "context"
 
-    "github.com/getoutreach/gobox/pkg/log"
+    "github.com/grevych/gobox/pkg/log"
 )
 
 // Create a type which can be passed directly as a value to
@@ -251,7 +251,7 @@ import (
     "context"
     "log/slog"
 
-    "github.com/getoutreach/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/olog"
 )
 
 var logger *slog.Logger = olog.New()
@@ -291,9 +291,9 @@ import (
     "context"
     "log/slog"
 
-    "github.com/getoutreach/gobox/pkg/app"
-    "github.com/getoutreach/gobox/pkg/olog"
-    "github.com/getoutreach/gobox/pkg/trace"
+    "github.com/grevych/gobox/pkg/app"
+    "github.com/grevych/gobox/pkg/olog"
+    "github.com/grevych/gobox/pkg/trace"
 )
 
 var logger *slog.Logger
@@ -313,7 +313,7 @@ func init() {
 }
 ```
 
-## func [New](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/olog.go#L39>)
+## func [New](<https://github.com/grevych/gobox/blob/main/pkg/olog/olog.go#L39>)
 
 ```go
 func New() *slog.Logger
@@ -323,7 +323,7 @@ New creates a new slog instance that can be used for logging. The provided logge
 The logger will be automatically associated with the module and package that it was instantiated in. This is done by looking at the call stack.
 Note: As mentioned above, this logger is associated with the module and package that created it. So, if you pass this logger to another module or package, the association will NOT be changed. This includes the caller metadata added to every log line as well as log\-level management. If a type has a common logging format that the other module or package should use, then a slog.LogValuer should be implemented on that type instead of passing a logger around. If trying to set attributes the be logged by default, this is not supported without retaining the original association.
 
-## func [NewWithHandler](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/olog.go#L114>)
+## func [NewWithHandler](<https://github.com/grevych/gobox/blob/main/pkg/olog/olog.go#L114>)
 
 ```go
 func NewWithHandler(h slog.Handler) *slog.Logger
@@ -332,7 +332,7 @@ func NewWithHandler(h slog.Handler) *slog.Logger
 NewWithHandler returns a new slog.Logger with the provided handler.
 Note: A logger created with this function will not be controlled by the global log level and will not have any of the features provided by this package. This is primarily meant to be used only by tests or other special cases.
 
-## func [NewWithHooks](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/olog.go#L125>)
+## func [NewWithHooks](<https://github.com/grevych/gobox/blob/main/pkg/olog/olog.go#L125>)
 
 ```go
 func NewWithHooks(hooks ...LogHookFunc) *slog.Logger
@@ -342,7 +342,7 @@ NewWithHooks returns a new slog.Logger, allowing hooks to be provided by the cal
 
 All hooks provided will be executed in the order in which they are provided and will overwrite any attributes written by the previous hook when a duplicate key is provided.
 
-## func [SetDefaultHandler](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/default_handler.go#L90>)
+## func [SetDefaultHandler](<https://github.com/grevych/gobox/blob/main/pkg/olog/default_handler.go#L90>)
 
 ```go
 func SetDefaultHandler(ht DefaultHandlerType)
@@ -350,7 +350,7 @@ func SetDefaultHandler(ht DefaultHandlerType)
 
 SetDefaultHandler changes the default handler to be the provided type. This must be called before any loggers are created to have an effect on all loggers.
 
-## func [SetGlobalLevel](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/log_level.go#L65>)
+## func [SetGlobalLevel](<https://github.com/grevych/gobox/blob/main/pkg/olog/log_level.go#L65>)
 
 ```go
 func SetGlobalLevel(l slog.Level)
@@ -358,7 +358,7 @@ func SetGlobalLevel(l slog.Level)
 
 SetGlobalLevel sets the global logging level used by all loggers by default that do not have a level set in the level registry. This impacts loggers that have previously been created as well as loggers that will be created in the future.
 
-## type [DefaultHandlerType](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/default_handler.go#L38>)
+## type [DefaultHandlerType](<https://github.com/grevych/gobox/blob/main/pkg/olog/default_handler.go#L38>)
 
 DefaultHandlerType denotes which handler should be used by default. This is calculated via the \`setDefaultHandler\` function on package init.
 
@@ -373,7 +373,7 @@ const (
 )
 ```
 
-## type [LogHookFunc](<https://github.com/getoutreach/gobox/blob/main/pkg/olog/hook_handler.go#L14>)
+## type [LogHookFunc](<https://github.com/grevych/gobox/blob/main/pkg/olog/hook_handler.go#L14>)
 
 LogHookFunc defines a function which can be called prior to a log being emitted, allowing the caller to augment the attributes on a log by returning a slice of slog.Attr which will appended to the record. The caller may also return an error, which will be handled by the underlying log handler \(slog.TextHandler or slog.JSONHandler\).
 

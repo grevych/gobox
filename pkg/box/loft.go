@@ -3,7 +3,7 @@
 // Description: This file contains box configuration for loft
 package box
 
-import "github.com/getoutreach/gobox/pkg/region"
+import "github.com/grevych/gobox/pkg/region"
 
 // LoftRuntimeConfig is configuration for loft runtimes
 type LoftRuntimeConfig struct {

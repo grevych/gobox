@@ -1,10 +1,10 @@
-//go:build or_test && !or_e2e
-// +build or_test,!or_e2e
+//go:build gobox_test && !gobox_e2e
+// +build gobox_test,!gobox_e2e
 
 package env
 
 import (
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cfg"
 )
 
 func ApplyOverrides() {

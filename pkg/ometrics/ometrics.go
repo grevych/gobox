@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/app"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	"go.opentelemetry.io/otel/exporters/prometheus"

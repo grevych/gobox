@@ -10,11 +10,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/events"
 
-	"github.com/getoutreach/gobox/pkg/async"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/orerr"
 )
 
 // Option allows to functional options pattern to configure pool
@@ -40,7 +40,7 @@ type SizeFunc func() int
 // no equivalent because calls to (*Pool).Go() will block if there are
 // no free workers. Control the size of the worker pool by calling
 // (*Pool).WithMaxGoroutines(). For more information, see the README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func ConstantSize(size int) OptionFunc {
 	return func(opts *Options) {
 		opts.Size = func() int {
@@ -143,7 +143,7 @@ type Pool struct {
 // https://pkg.go.dev/github.com/sourcegraph/conc/pool instead. Use
 // (*Pool).New().WithContext() instead. Replace calls to Schedule with
 // (*Pool).Go(). For more information, see the README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func New(ctx context.Context, options ...Option) *Pool {
 	// default values
 	var opts = &Options{
@@ -256,7 +256,7 @@ func (p *Pool) Close() {
 // https://pkg.go.dev/github.com/sourcegraph/conc/pool instead. Replace
 // calls to Schedule with (*Pool).Go(). For more information, see the
 // README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func (p *Pool) Schedule(ctx context.Context, r async.Runner) error {
 	// Check whether pool is alive
 	if p.context.Err() != nil {
@@ -302,7 +302,7 @@ type loggingScheduler struct {
 // https://pkg.go.dev/github.com/sourcegraph/conc/pool instead. There is
 // no replacement for this function. Instead, log on each item when
 // calling (*Pool).Go(). For more information, see the README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func (w *loggingScheduler) Schedule(ctx context.Context, r async.Runner) error {
 	return w.log(ctx, w.Inner.Schedule(ctx, async.Func(func(ctx context.Context) error {
 		return w.log(ctx, r.Run(ctx))
@@ -316,7 +316,7 @@ func (w *loggingScheduler) Schedule(ctx context.Context, r async.Runner) error {
 // https://pkg.go.dev/github.com/sourcegraph/conc/pool instead. There is
 // no replacement for this function. Instead, log on each item when
 // calling (*Pool).Go(). For more information, see the README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func WithLogging(name string, s Scheduler) Scheduler {
 	return &loggingScheduler{Name: name, Inner: s}
 }

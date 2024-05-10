@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/codec"
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/codec"
+	"github.com/grevych/gobox/pkg/log"
 	"gotest.tools/v3/assert"
 )
 

@@ -19,8 +19,8 @@ import (
 	"syscall"
 
 	"github.com/creack/pty"
-	"github.com/getoutreach/gobox/pkg/app"
 	"github.com/google/uuid"
+	"github.com/grevych/gobox/pkg/app"
 	"github.com/pkg/errors"
 	"golang.org/x/term"
 )

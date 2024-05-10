@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 )
 
 // nolint:gochecknoglobals // Why: flag used in multiple places

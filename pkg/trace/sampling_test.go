@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package trace_test
 
@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/trace"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/trace"
 	"go.opentelemetry.io/otel/attribute"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	oteltrace "go.opentelemetry.io/otel/trace"

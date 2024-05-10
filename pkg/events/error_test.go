@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package events_test
 
@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/log"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/log"
 	"github.com/pkg/errors"
 )
 
@@ -28,7 +28,7 @@ func (errorSuite) TestErrorInfo(t *testing.T) {
 	}
 
 	stack := []string{
-		"gobox/pkg/events/error_test.go:18 `events_test.errorSuite.TestErrorInfo`",
+		"gobox/pkg/events/errgobox_test.go:18 `events_test.errorSuite.TestErrorInfo`",
 	}
 
 	s, _ := got["error.stack"].([]string)
@@ -48,7 +48,7 @@ func (errorSuite) TestErrorInfoCollapse(t *testing.T) {
 	// with collapse behavior, both message and stack should be set.
 	want := map[string]interface{}{
 		"kind":    "cause",
-		"stack":   differs.StackLike("gobox/pkg/events/error_test.go:41 `events_test.errorSuite.TestErrorInfoCollapse`"),
+		"stack":   differs.StackLike("gobox/pkg/events/errgobox_test.go:41 `events_test.errorSuite.TestErrorInfoCollapse`"),
 		"message": "test error",
 	}
 	if diff := cmp.Diff(want, got, differs.Custom()); diff != "" {
@@ -154,7 +154,7 @@ func (errorSuite) TestNestedErrorLogInfo(t *testing.T) {
 		"error.message":       "outer error",
 		"error.cause.kind":    "cause",
 		"error.cause.message": "inner error",
-		"error.cause.stack":   differs.StackLike("gobox/pkg/events/error_test.go:000 `events_test.errorSuite.TestNestedErrorLogInfo`"),
+		"error.cause.stack":   differs.StackLike("gobox/pkg/events/errgobox_test.go:000 `events_test.errorSuite.TestNestedErrorLogInfo`"),
 	}
 	if diff := cmp.Diff(want, got, differs.Custom()); diff != "" {
 		t.Error("custom error mismatched", diff)

@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/app"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/app"
 )
 
 // TestLogLevelByModule ensures that the log-level is able to be

@@ -8,7 +8,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/getoutreach/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/async"
 )
 
 // Wait is a scheduler that allows you to wait until all scheduled tasks are
@@ -34,7 +34,7 @@ func (w *Wait) Schedule(ctx context.Context, r async.Runner) error {
 // Deprecated: This library is being deprecated in favor of using
 // https://pkg.go.dev/github.com/sourcegraph/conc/pool instead. Use
 // (*Pool).Wait() instead. For more information, see the README:
-// https://github.com/getoutreach/gobox/tree/main/pkg/async/pool/README.md
+// https://github.com/grevych/gobox/tree/main/pkg/async/pool/README.md
 func WithWait(s Scheduler) (scheduler Scheduler, wait func()) {
 	w := &Wait{Scheduler: s}
 	return w, func() {

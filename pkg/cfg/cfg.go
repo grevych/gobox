@@ -41,12 +41,12 @@
 // For dev environments, the preferred path is ~/.outreach/ and this
 // can be configured by app init using the following override:
 //
-//	import env "github.com/getoutreach/gobox/pkg/env"
+//	import env "github.com/grevych/gobox/pkg/env"
 //	func init() {
 //	    env.ApplyOverrides()
 //	}
 //
-// To build with this override, the build tag or_dev should be used.
+// To build with this override, the build tag gobox_dev should be used.
 //
 // Dev environments may also need command line or environment
 // overrides.  The suggested mechanism is to add the override as part

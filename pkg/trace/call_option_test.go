@@ -5,15 +5,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/internal/call"
-	"github.com/getoutreach/gobox/internal/logf"
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/log/logtest"
-	"github.com/getoutreach/gobox/pkg/trace"
-	"github.com/getoutreach/gobox/pkg/trace/tracetest"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
+	"github.com/grevych/gobox/internal/call"
+	"github.com/grevych/gobox/internal/logf"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log/logtest"
+	"github.com/grevych/gobox/pkg/trace"
+	"github.com/grevych/gobox/pkg/trace/tracetest"
 	"gotest.tools/v3/assert"
 )
 

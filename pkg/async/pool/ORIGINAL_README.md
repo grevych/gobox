@@ -25,10 +25,10 @@ Goal here is to process 10000 "cpu heavy" operations.
 | BenchmarkPool5-1000 | Putting them into pool and processing just N items at once.             |
 
 ```bash
-go test -benchmem -cpu 1,2,6 -run=^$ github.com/getoutreach/gobox/pkg/async/pool -v -bench '^Benchmark'
+go test -benchmem -cpu 1,2,6 -run=^$ github.com/grevych/gobox/pkg/async/pool -v -bench '^Benchmark'
 goos: linux
 goarch: amd64
-pkg: github.com/getoutreach/gobox/pkg/async/pool
+pkg: github.com/grevych/gobox/pkg/async/pool
 BenchmarkPool1000
 BenchmarkPool1000-6            1        1560899231 ns/op        234332864 B/op  20031897 allocs/op
 BenchmarkPool100
@@ -40,7 +40,7 @@ BenchmarkPool5-6               1        1313762356 ns/op        232909576 B/op  
 BenchmarkPureGo
 BenchmarkPureGo-6              1        2264417948 ns/op        237819960 B/op  20034677 allocs/op
 PASS
-ok  	github.com/getoutreach/gobox/pkg/async/pool	28.360s
+ok  	github.com/grevych/gobox/pkg/async/pool	28.360s
 
 ```
 
@@ -58,7 +58,7 @@ import (
   "fmt"
   "context"
   "fmt"
-  "github.com/getoutreach/gobox/pkg/async/pool"
+  "github.com/grevych/gobox/pkg/async/pool"
 )
 
 func main() {

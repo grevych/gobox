@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package adapters_test
 
@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/log/adapters"
-	"github.com/getoutreach/gobox/pkg/log/logtest"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log/adapters"
+	"github.com/grevych/gobox/pkg/log/logtest"
 )
 
 func printEntries(entries []log.F) {

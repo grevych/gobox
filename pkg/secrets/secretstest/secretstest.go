@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/getoutreach/gobox/pkg/secrets"
+	"github.com/grevych/gobox/pkg/secrets"
 )
 
 // nolint:gochecknoglobals

@@ -1,10 +1,10 @@
-//go:build or_dev
-// +build or_dev
+//go:build gobox_dev
+// +build gobox_dev
 
 package env
 
 import (
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cfg"
 )
 
 func ApplyOverrides() {

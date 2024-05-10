@@ -8,12 +8,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/getoutreach/gobox/internal/call"
+	"github.com/grevych/gobox/internal/call"
 
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/metrics"
-	"github.com/getoutreach/gobox/pkg/orerr"
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/metrics"
+	"github.com/grevych/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 var callTracker = &call.Tracker{}

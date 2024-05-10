@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/getoutreach/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/orerr"
 )
 
 const ErrUsernameTaken orerr.SentinelError = "username already taken"

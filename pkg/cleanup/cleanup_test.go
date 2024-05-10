@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package cleanup_test
 
@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/cleanup"
-	"github.com/getoutreach/gobox/pkg/shuffler"
+	"github.com/grevych/gobox/pkg/cleanup"
+	"github.com/grevych/gobox/pkg/shuffler"
 
 	"gotest.tools/v3/assert"
 	"gotest.tools/v3/assert/cmp"

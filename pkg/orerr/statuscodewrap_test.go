@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package orerr_test
 
@@ -8,8 +8,8 @@ import (
 	"github.com/pkg/errors"
 	"gotest.tools/v3/assert"
 
-	"github.com/getoutreach/gobox/pkg/orerr"
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 func (suite) Basics(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/getoutreach/gobox/pkg/ometrics
+module github.com/grevych/gobox/pkg/ometrics
 
 go 1.21
 

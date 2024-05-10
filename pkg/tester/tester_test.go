@@ -1,7 +1,7 @@
 package tester_test
 
 import (
-	"github.com/getoutreach/gobox/pkg/tester"
+	"github.com/grevych/gobox/pkg/tester"
 
 	"os"
 	"path/filepath"

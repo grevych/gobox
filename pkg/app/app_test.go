@@ -6,7 +6,7 @@ import (
 
 	"gotest.tools/v3/assert"
 
-	"github.com/getoutreach/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/app"
 )
 
 func TestAppInfo(t *testing.T) {

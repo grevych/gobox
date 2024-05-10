@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/getoutreach/gobox/pkg/cfg"
-	"github.com/getoutreach/gobox/pkg/env"
-	"github.com/getoutreach/gobox/pkg/secrets/secretstest"
+	"github.com/grevych/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/env"
+	"github.com/grevych/gobox/pkg/secrets/secretstest"
 )
 
 func Example() {

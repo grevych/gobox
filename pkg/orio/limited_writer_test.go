@@ -3,7 +3,7 @@ package orio_test
 import (
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/orio"
+	"github.com/grevych/gobox/pkg/orio"
 	"gotest.tools/v3/assert"
 )
 

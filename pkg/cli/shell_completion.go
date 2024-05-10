@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/getoutreach/gobox/pkg/cli/updater"
+	"github.com/grevych/gobox/pkg/cli/updater"
 	"github.com/urfave/cli/v2"
 )
 

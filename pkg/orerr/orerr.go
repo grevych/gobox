@@ -8,8 +8,8 @@ package orerr
 import (
 	"errors"
 
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 // A SentinelError is a constant which ought to be compared using errors.Is.

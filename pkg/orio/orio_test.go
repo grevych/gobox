@@ -5,7 +5,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/orio"
+	"github.com/grevych/gobox/pkg/orio"
 	"gotest.tools/v3/assert"
 )
 

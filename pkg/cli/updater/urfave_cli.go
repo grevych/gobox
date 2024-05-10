@@ -19,8 +19,8 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/fatih/color"
-	"github.com/getoutreach/gobox/pkg/cli/updater/resolver"
-	goboxexec "github.com/getoutreach/gobox/pkg/exec"
+	"github.com/grevych/gobox/pkg/cli/updater/resolver"
+	goboxexec "github.com/grevych/gobox/pkg/exec"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli/v2"
 )

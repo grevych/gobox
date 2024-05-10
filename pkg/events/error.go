@@ -10,8 +10,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/getoutreach/gobox/pkg/caller"
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/caller"
+	"github.com/grevych/gobox/pkg/log"
 	"github.com/pkg/errors"
 )
 
@@ -191,7 +191,7 @@ func errMessage(err error) string {
 
 func errStack(err error) []string {
 	// github.com/pkg/errors implements the Tracer interface
-	// https://godoc.org/github.com/pkg/errors#hdr-Retrieving_the_stack_trace_of_an_error_or_wrapper
+	// https://godoc.org/github.com/pkg/errors#hdr-Retrieving_the_stack_trace_of_an_errgobox_gobox_wrapper
 	type tracer interface {
 		StackTrace() errors.StackTrace
 	}

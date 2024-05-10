@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package trace_test
 
@@ -8,12 +8,12 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/trace"
-	"github.com/getoutreach/gobox/pkg/trace/tracetest"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/trace"
+	"github.com/grevych/gobox/pkg/trace/tracetest"
 )
 
 func TestForceTracingByHeader(t *testing.T) {

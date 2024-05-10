@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/box"
+	"github.com/grevych/gobox/pkg/box"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/versent/saml2aws/v2/pkg/awsconfig"

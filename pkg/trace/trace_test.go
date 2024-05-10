@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package trace_test
 
@@ -7,13 +7,13 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/shuffler"
-	"github.com/getoutreach/gobox/pkg/trace"
-	"github.com/getoutreach/gobox/pkg/trace/tracetest"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/shuffler"
+	"github.com/grevych/gobox/pkg/trace"
+	"github.com/grevych/gobox/pkg/trace/tracetest"
 )
 
 func TestAll(t *testing.T) {

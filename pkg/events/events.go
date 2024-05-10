@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-//go:generate go run github.com/getoutreach/gobox/tools/logger
+//go:generate go run github.com/grevych/gobox/tools/logger
 
 // Durations holds the various times in seconds
 type Durations struct {

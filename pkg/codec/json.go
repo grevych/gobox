@@ -8,9 +8,9 @@ import (
 	"encoding/json"
 	"io"
 
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/orerr"
-	"github.com/getoutreach/gobox/pkg/orio"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/orio"
 )
 
 // JSON is a factory for JSON encoders and decoders.

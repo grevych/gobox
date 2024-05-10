@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package log_test
 
@@ -7,11 +7,11 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/differs"
-	"github.com/getoutreach/gobox/pkg/events"
-	"github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/log/logtest"
 	"github.com/google/go-cmp/cmp"
+	"github.com/grevych/gobox/pkg/differs"
+	"github.com/grevych/gobox/pkg/events"
+	"github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log/logtest"
 )
 
 type fatalSuite struct{}

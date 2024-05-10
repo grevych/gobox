@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package secrets_test
 
@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	_ "github.com/getoutreach/gobox/pkg/log"
-	"github.com/getoutreach/gobox/pkg/secrets"
-	"github.com/getoutreach/gobox/pkg/secrets/secretstest"
-	"github.com/getoutreach/gobox/pkg/shuffler"
+	_ "github.com/grevych/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/secrets"
+	"github.com/grevych/gobox/pkg/secrets/secretstest"
+	"github.com/grevych/gobox/pkg/shuffler"
 )
 
 func TestAll(t *testing.T) {

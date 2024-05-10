@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cfg"
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v3"
 )

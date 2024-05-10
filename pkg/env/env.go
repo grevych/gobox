@@ -1,7 +1,7 @@
 // Copyright 2022 Outreach Corporation. All Rights Reserved.
 
-//go:build !or_test && !or_dev && !or_e2e
-// +build !or_test,!or_dev,!or_e2e
+//go:build !gobox_test && !gobox_dev && !gobox_e2e
+// +build !gobox_test,!gobox_dev,!gobox_e2e
 
 // Package env provides environment specific overrides
 //
@@ -9,8 +9,8 @@
 // at app initialization and will effectively not do anything at all
 // in production.
 //
-// This is done via build tags: or_test and or_dev represent the CI and
-// dev-env environments.  The tags use the or_ prefix just in case
+// This is done via build tags: gobox_test and gobox_dev represent the CI and
+// dev-env environments.  The tags use the gobox_ prefix just in case
 // some package in the dependency chain uses the same build tag to
 // change their own behavior.
 package env

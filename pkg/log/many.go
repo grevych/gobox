@@ -4,7 +4,7 @@
 
 package log
 
-import "github.com/getoutreach/gobox/internal/logf"
+import "github.com/grevych/gobox/internal/logf"
 
 // Many aggregates marshaling of many items
 //

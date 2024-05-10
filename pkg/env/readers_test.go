@@ -1,7 +1,7 @@
 // Copyright 2022 Outreach Corporation. All Rights Reserved.
 
-//go:build or_dev || or_test || or_e2e
-// +build or_dev or_test or_e2e
+//go:build gobox_dev || gobox_test || gobox_e2e
+// +build gobox_dev gobox_test gobox_e2e
 
 // Description: Unit tests for configuration readers
 

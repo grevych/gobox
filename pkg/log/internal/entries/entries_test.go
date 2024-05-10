@@ -1,12 +1,12 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package entries_test
 
 import (
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/log/internal/entries"
-	"github.com/getoutreach/gobox/pkg/shuffler"
+	"github.com/grevych/gobox/pkg/log/internal/entries"
+	"github.com/grevych/gobox/pkg/shuffler"
 )
 
 func TestAll(t *testing.T) {

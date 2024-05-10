@@ -33,16 +33,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/getoutreach/gobox/internal/logf"
-	"github.com/getoutreach/gobox/pkg/app"
-	"github.com/getoutreach/gobox/pkg/callerinfo"
-	"github.com/getoutreach/gobox/pkg/log/internal/entries"
+	"github.com/grevych/gobox/internal/logf"
+	"github.com/grevych/gobox/pkg/app"
+	"github.com/grevych/gobox/pkg/callerinfo"
+	"github.com/grevych/gobox/pkg/log/internal/entries"
 )
 
 // packageSourceInfoSkips lists the packages that we will skip when calculating caller info
 var packageSourceInfoSkips = map[string]interface{}{
-	"github.com/getoutreach/gobox/pkg/log":   nil,
-	"github.com/getoutreach/gobox/pkg/trace": nil,
+	"github.com/grevych/gobox/pkg/log":   nil,
+	"github.com/grevych/gobox/pkg/trace": nil,
 }
 
 // nolint:gochecknoglobals // Why: sets up overwritable writers

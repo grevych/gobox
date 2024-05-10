@@ -6,7 +6,7 @@
 package trace
 
 import (
-	"github.com/getoutreach/gobox/pkg/cfg"
+	"github.com/grevych/gobox/pkg/cfg"
 )
 
 // Config is the tracing config that gets read from trace.yaml

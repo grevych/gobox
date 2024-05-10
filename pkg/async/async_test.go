@@ -1,4 +1,4 @@
-//go:build !or_e2e
+//go:build !gobox_e2e
 
 package async_test
 
@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getoutreach/gobox/pkg/async"
-	"github.com/getoutreach/gobox/pkg/shuffler"
+	"github.com/grevych/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/shuffler"
 	"gotest.tools/v3/assert"
 	is "gotest.tools/v3/assert/cmp"
 )

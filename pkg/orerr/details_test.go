@@ -1,7 +1,7 @@
 // Copyright 2023 Outreach Corporation. All Rights Reserved.
 
-//go:build or_dev || or_test || or_e2e
-// +build or_dev or_test or_e2e
+//go:build gobox_dev || gobox_test || gobox_e2e
+// +build gobox_dev gobox_test gobox_e2e
 
 package orerr_test
 
@@ -11,8 +11,8 @@ import (
 	"github.com/pkg/errors"
 	"gotest.tools/v3/assert"
 
-	"github.com/getoutreach/gobox/pkg/orerr"
-	"github.com/getoutreach/gobox/pkg/statuscodes"
+	"github.com/grevych/gobox/pkg/orerr"
+	"github.com/grevych/gobox/pkg/statuscodes"
 )
 
 func TestErrDetails(t *testing.T) {

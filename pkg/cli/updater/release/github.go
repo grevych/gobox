@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/getoutreach/gobox/pkg/cfg"
 	gogithub "github.com/google/go-github/v58/github"
+	"github.com/grevych/gobox/pkg/cfg"
 	"github.com/pkg/errors"
 	"golang.org/x/oauth2"
 )

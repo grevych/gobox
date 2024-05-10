@@ -18,7 +18,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/getoutreach/gobox/pkg/log"
+	"github.com/grevych/gobox/pkg/log"
 )
 
 // NewLogRecorder starts a new log recorder.

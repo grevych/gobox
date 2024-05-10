@@ -12,7 +12,7 @@ import (
 	"runtime/debug"
 	"syscall"
 
-	"github.com/getoutreach/gobox/pkg/trace"
+	"github.com/grevych/gobox/pkg/trace"
 )
 
 // urfaveRegisterShutdownHandler registers a signal notifier that translates various term
