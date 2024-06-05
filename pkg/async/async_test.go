@@ -1,24 +1,16 @@
-//go:build !gobox_e2e
-
 package async_test
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"testing"
 	"time"
 
 	"github.com/grevych/gobox/pkg/async"
-	"github.com/grevych/gobox/pkg/shuffler"
 	"gotest.tools/v3/assert"
 	is "gotest.tools/v3/assert/cmp"
 )
-
-func TestAll(t *testing.T) {
-	shuffler.Run(t, suite{})
-}
-
-type suite struct{}
 
 type runWithCloser struct {
 	isclosed bool
@@ -37,7 +29,7 @@ func (r *runWithCloser) Close(c context.Context) error {
 	return nil
 }
 
-func (suite) TestRunGroupErrorPropagation(t *testing.T) {
+func TestRunGroupErrorPropagation(t *testing.T) {
 	ctx := context.Background()
 	r1 := async.Func(func(c context.Context) error {
 		return fmt.Errorf("oh no")
@@ -49,7 +41,7 @@ func (suite) TestRunGroupErrorPropagation(t *testing.T) {
 	assert.Equal(t, r2.isclosed, true, "Closed the infinite loop correctly")
 }
 
-func (suite) TestRunCancelPropagation(t *testing.T) {
+func TestRunCancelPropagation(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	async.Run(ctx, async.Func(func(ctx context.Context) error {
 		<-ctx.Done()
@@ -60,7 +52,7 @@ func (suite) TestRunCancelPropagation(t *testing.T) {
 	async.Default.Wait()
 }
 
-func (suite) TestRunDeadlinePropagation(t *testing.T) {
+func TestRunDeadlinePropagation(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	async.Run(ctx, async.Func(func(ctx context.Context) error {
 		if _, ok := ctx.Deadline(); !ok {
@@ -73,14 +65,14 @@ func (suite) TestRunDeadlinePropagation(t *testing.T) {
 	async.Default.Wait()
 }
 
-func (suite) TestSleepUntil(t *testing.T) {
+func TestSleepUntil(t *testing.T) {
 	now := time.Now()
 	sleepTime := 50 * time.Millisecond
 	async.SleepUntil(context.Background(), time.Now().Add(sleepTime))
 	assert.Assert(t, time.Since(now) >= sleepTime, "slept too short")
 }
 
-func (suite) TestMutexWithContext_EarlyCancel(t *testing.T) {
+func TestMutexWithContext_EarlyCancel(t *testing.T) {
 	mutex := async.NewMutexWithContext()
 	ctx1 := context.Background()
 
@@ -98,7 +90,7 @@ func (suite) TestMutexWithContext_EarlyCancel(t *testing.T) {
 	assert.Assert(t, is.ErrorContains(err, ""), "expected error from cancellation")
 }
 
-func (suite) TestMutexWithContext_LateCancel(t *testing.T) {
+func TestMutexWithContext_LateCancel(t *testing.T) {
 	mutex := async.NewMutexWithContext()
 	ctx1 := context.Background()
 
@@ -121,7 +113,7 @@ func (suite) TestMutexWithContext_LateCancel(t *testing.T) {
 	assert.Assert(t, is.ErrorContains(err2, ""), "expected error from cancellation")
 }
 
-func (suite) TestMutexWithContext_ExtraUnlock(t *testing.T) {
+func TestMutexWithContext_ExtraUnlock(t *testing.T) {
 	mutex := async.NewMutexWithContext()
 	ctx1 := context.Background()
 
@@ -133,11 +125,66 @@ func (suite) TestMutexWithContext_ExtraUnlock(t *testing.T) {
 	assert.Assert(t, is.Panics(func() { mutex.Unlock() }))
 }
 
-func ExampleTasks_run() {
+func TestTaskGroup_RunWithError(t *testing.T) {
+	ctx := context.Background()
+
+	count := 0
+	tg := async.TaskGroup{Name: "test"}
+	tg.Run(ctx, async.Func(func(ctx context.Context) error {
+		count = 1
+		return errors.New("some error")
+	}))
+
+	tg.Wait()
+	assert.Equal(t, count, 1)
+}
+
+func TestTaskGroup_LoopWithError(t *testing.T) {
+	ctx := context.Background()
+
+	count := 0
+	tg := async.TaskGroup{Name: "test"}
+	tg.Loop(ctx, async.Func(func(ctx context.Context) error {
+		if count < 3 {
+			count++
+		} else {
+			return errors.New("some error")
+		}
+		return nil
+	}))
+
+	tg.Wait()
+	assert.Equal(t, count, 3)
+}
+
+func TestTaskGroup_LoopWithContextCanceled(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+
+	count := 0
+	tg := async.TaskGroup{Name: "test"}
+	tg.Loop(ctx, async.Func(func(ctx context.Context) error {
+		count++
+		return nil
+	}))
+
+	go func() {
+		for {
+			if count > 3 {
+				cancel()
+				break
+			}
+		}
+	}()
+
+	tg.Wait()
+	assert.Assert(t, true)
+}
+
+func ExampleTaskGroup_run() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	tasks := async.Tasks{Name: "example"}
+	tasks := async.TaskGroup{Name: "example"}
 	tasks.Run(ctx, async.Func(func(ctx context.Context) error {
 		fmt.Println("Run example")
 
@@ -148,26 +195,6 @@ func ExampleTasks_run() {
 	tasks.Wait()
 
 	// Output: Run example
-}
-
-func ExampleTasks_runBackground() {
-	ctxMain, cancel := context.WithCancel(context.Background())
-
-	async.RunBackground(ctxMain, async.Func(func(ctx context.Context) error {
-		// the task is expected to run with background context
-		// cancel the context passed into RunBackground() function should not
-		// propagate to the context used by async.Func()
-		cancel()
-		fmt.Println(ctx.Err())
-		fmt.Println("Run example")
-		return nil
-	}))
-
-	async.Default.Wait()
-
-	// Output:
-	// <nil>
-	// Run example
 }
 
 func ExampleLoop() {
@@ -195,12 +222,12 @@ func ExampleLoop() {
 	// count 3
 }
 
-func ExampleTasks_loop() {
+func ExampleTaskGroup_loop() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
 	count := 0
-	tasks := async.Tasks{Name: "example"}
+	tasks := async.TaskGroup{Name: "example"}
 	tasks.Loop(ctx, async.Func(func(ctx context.Context) error {
 		if count < 3 {
 			count++
