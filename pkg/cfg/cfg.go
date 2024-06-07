@@ -2,7 +2,7 @@
 
 // Description: Provides configuration management helpers for go services
 
-// Package cfg manages config for outreach go services
+// Package cfg manages config for go services
 //
 // Every go app or package that needs config should define a strongly
 // typed struct for it
@@ -80,10 +80,10 @@ import (
 )
 
 // the default read is a prod reader which looks for
-// config files in /run/config/outreach.io/<filename>
+// config files in /run/config/gobox/<filename>
 // nolint:gochecknoglobals // Why: global default
 var defaultReader = Reader(func(fileName string) ([]byte, error) {
-	name := "/run/config/outreach.io/" + fileName
+	name := "/run/config/gobox/" + fileName
 	if runtime.GOOS == "windows" {
 		name = "C:" + filepath.FromSlash(name)
 	}

@@ -12,17 +12,5 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for additional information on con
 ## What this PR does / why we need it
 
 
-<!-- <<Stencil::Block(jiraPrefix)>> -->
-
-## Jira ID
-
-[XX-XX]
-
-<!-- <</Stencil::Block>> -->
-
 <!-- Notes that may be helpful for anyone reviewing this PR -->
 ## Notes for your reviewers
-
-<!-- <<Stencil::Block(custom)>> -->
-
-<!-- <</Stencil::Block>> -->

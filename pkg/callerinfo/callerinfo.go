@@ -22,7 +22,7 @@ import (
 // * github.com/grevych/gobox/pkg/callerinfo.Test_Callers for a module function
 // File is the file path of the call site
 // LineNum is the line number inside that File of the call site
-// Module is a best-effort attempt to get the module name for the call site (i.e. github.com/getoutreach/gobox)
+// Module is a best-effort attempt to get the module name for the call site (i.e. github.com/grevych/gobox)
 // ModuleVersion will be the version of the Module used at the call site
 type CallerInfo struct {
 	Function      string

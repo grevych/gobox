@@ -61,7 +61,7 @@ func New() *slog.Logger {
 // through New().
 type metadata struct {
 	// ModulePath is the path of the module that created this logger.
-	// Format: <module> (e.g., github.com/getoutreach/gobox)
+	// Format: <module> (e.g., github.com/grevych/gobox)
 	ModulePath string
 
 	// ModuleVersion is the version of the module that created this

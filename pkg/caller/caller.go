@@ -12,8 +12,9 @@ import (
 	"strings"
 )
 
+// Consider to remove the username from the path
 // nolint:gochecknoglobals // Why: re-usable regex
-var trimPathsRe = regexp.MustCompile(`(github\.com(/getoutreach?)|golang\.org|go/src)/?`)
+var trimPathsRe = regexp.MustCompile(`(github\.com(/grevych?)|golang\.org|go/src)/?`)
 
 // FileLine returns the caller file:line, skipping the specified number of frames.
 func FileLine(skip int) string {

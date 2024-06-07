@@ -86,7 +86,7 @@ func info() *Data {
 	// have several apps sharing the same ServiceID.  But that's not
 	// supportd by bootstrap yet and so this hard-coded assumption works
 	// well enough for now.
-	serviceID := fmt.Sprintf("%s@outreach.cloud", appName)
+	serviceID := fmt.Sprintf("%s@gobox.cloud", appName)
 
 	parts := strings.Split(namespace, "--")
 	if len(parts) == 2 {

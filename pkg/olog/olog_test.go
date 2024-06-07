@@ -56,7 +56,7 @@ func TestLogWithHook(t *testing.T) {
 			Message: "should appear",
 			Level:   slog.LevelInfo,
 			Attrs: map[string]any{
-				"module":    "github.com/getoutreach/gobox",
+				"module":    "github.com/grevych/gobox",
 				"modulever": "",
 				"data":      map[string]any{"foo": "bar"},
 			},
@@ -102,7 +102,7 @@ func TestLogWithAppInfoHook(t *testing.T) {
 			Message: "should appear",
 			Level:   slog.LevelInfo,
 			Attrs: map[string]any{
-				"module":    "github.com/getoutreach/gobox",
+				"module":    "github.com/grevych/gobox",
 				"modulever": "",
 				"app":       expAppInfo,
 			},

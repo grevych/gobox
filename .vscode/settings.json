@@ -1,9 +1,6 @@
 {
   // Please consider contributing back all added
   // settings to stencil!
-  // <<Stencil::Block(settings)>>
-
-  // <</Stencil::Block>>
   "go.lintTool": "golangci-lint",
   "go.lintFlags": [],
   "go.formatTool": "goimports",
@@ -13,7 +10,8 @@
     "golangci-lint": "${workspaceFolder}/.bootstrap/shell/vscode/golang-linters.sh"
   },
   "go.buildTags": "gobox_dev",
-  "go.testTags": "gobox_test,gobox_int,gobox_e2e",
+   "go.testTags": "gobox_test",
+  // "go.testTags": "gobox_test,gobox_int,gobox_e2e",
   "files.trimTrailingWhitespace": true,
   // This prevents 99% of issues with linters :)
   "editor.formatOnSave": true,
