@@ -36,7 +36,7 @@ func StackTrace(want, got string) string {
 		x, y = strings.TrimSpace(x), strings.TrimSpace(y)
 		x = stripNumbersRe.ReplaceAllString(x, "")
 		y = stripNumbersRe.ReplaceAllString(y, "")
-		return strings.Contains(x, y) || strings.Contains(y, x)
+		return (strings.Contains(x, y) && len(y) > 0) || (strings.Contains(y, x) && len(x) > 0)
 	})
 	wlines := strings.Split(want, "\n")
 	glines := strings.Split(got, "\n")

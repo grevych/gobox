@@ -24,7 +24,7 @@ import (
 
 var (
 	// BoxConfigPath is the $HOME/<BoxConfigPath> location of the box config storage
-	BoxConfigPath = ".outreach/.config/box"
+	BoxConfigPath = ".gobox/.config/box"
 	// BoxConfigFile is the name of the box config storage file
 	BoxConfigFile = "box.yaml"
 )

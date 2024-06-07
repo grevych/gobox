@@ -32,7 +32,7 @@ func Test_Callers(t *testing.T) {
 	assert.Equal(t, ci.Function, "github.com/grevych/gobox/pkg/callerinfo.Test_Callers")
 	assert.Check(t, strings.HasSuffix(ci.File, "callerinfo_test.go"))
 	assert.Check(t, ci.LineNum > 0)
-	assert.Equal(t, ci.Module, "github.com/getoutreach/gobox")
+	assert.Equal(t, ci.Module, "github.com/grevych/gobox")
 	// Until https://github.com/golang/go/issues/33976 is fixed, module info is not available in unit tests >_<
 	// assert.Check(t, ci.ModuleVersion != "")
 

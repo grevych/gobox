@@ -15,7 +15,7 @@ func TestAppInfo(t *testing.T) {
 
 	appInfo := app.Info()
 	assert.Equal(t, appInfo.Name, "appname")
-	assert.Equal(t, appInfo.ServiceID, "appname@outreach.cloud")
+	assert.Equal(t, appInfo.ServiceID, "appname@gobox.cloud")
 }
 
 func TestAppInfoRegion(t *testing.T) {

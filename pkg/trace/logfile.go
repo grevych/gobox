@@ -17,7 +17,6 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/grevych/gobox/pkg/cli/logfile"
 	"github.com/grevych/gobox/pkg/events"
 	"github.com/grevych/gobox/pkg/log"
 	"go.opentelemetry.io/otel"
@@ -28,6 +27,8 @@ import (
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
 	semconv "go.opentelemetry.io/otel/semconv/v1.10.0"
 )
+
+const logfileTraceSocketType = "tcp"
 
 // NewLogFileTracer initializes a tracer that sends traces to a log file.
 func NewLogFileTracer(ctx context.Context, serviceName string, config *Config) (tracer, error) {
@@ -82,7 +83,7 @@ func NewLogFileTracer(ctx context.Context, serviceName string, config *Config) (
 // NewLogFileExporter Creates a new exporter that sends all spans to the passed in port
 // on localhost.
 func NewLogFileExporter(port int) (sdktrace.SpanExporter, error) {
-	conn, err := net.Dial(logfile.TraceSocketType, fmt.Sprintf("localhost:%d", port))
+	conn, err := net.Dial(logfileTraceSocketType, fmt.Sprintf("localhost:%d", port))
 	if err != nil {
 		return nil, err
 	}

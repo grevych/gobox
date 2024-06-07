@@ -14,9 +14,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-type errorSuite struct{}
-
-func (errorSuite) TestErrorInfo(t *testing.T) {
+func TestErrorInfo(t *testing.T) {
 	err := errors.New("test error")
 	info := events.NewErrorInfo(err)
 	got := map[string]interface{}{}
@@ -27,17 +25,18 @@ func (errorSuite) TestErrorInfo(t *testing.T) {
 		t.Fatal("Unexpected message", got["error.message"])
 	}
 
-	stack := []string{
-		"gobox/pkg/events/errgobox_test.go:18 `events_test.errorSuite.TestErrorInfo`",
+	expectedStack := []string{
+		"gobox/pkg/events/error_test.go:18 `events_test.TestErrorInfo`",
 	}
 
-	s, _ := got["error.stack"].([]string)
-	if diff := differs.StackTrace(strings.Join(stack, "\n"), strings.Join(s, "\n")); diff != "" {
-		t.Fatal("got unexpected stack", s, "\n", diff)
+	errorStack, _ := got["error.stack"].(string)
+	stack := []string{errorStack}
+	if diff := differs.StackTrace(strings.Join(expectedStack, "\n"), strings.Join(stack, "\n")); diff != "" {
+		t.Fatal("got unexpected stack", stack, "\n", diff)
 	}
 }
 
-func (errorSuite) TestErrorInfoCollapse(t *testing.T) {
+func TestErrorInfoCollapse(t *testing.T) {
 	err := errors.Wrap(errors.New("test error"), "context")
 	info := events.NewErrorInfo(err)
 	got := map[string]interface{}{}
@@ -48,7 +47,7 @@ func (errorSuite) TestErrorInfoCollapse(t *testing.T) {
 	// with collapse behavior, both message and stack should be set.
 	want := map[string]interface{}{
 		"kind":    "cause",
-		"stack":   differs.StackLike("gobox/pkg/events/errgobox_test.go:41 `events_test.errorSuite.TestErrorInfoCollapse`"),
+		"stack":   differs.StackLike("gobox/pkg/events/error_test.go:39 `events_test.TestErrorInfoCollapse`"),
 		"message": "test error",
 	}
 	if diff := cmp.Diff(want, got, differs.Custom()); diff != "" {
@@ -56,7 +55,7 @@ func (errorSuite) TestErrorInfoCollapse(t *testing.T) {
 	}
 }
 
-func (errorSuite) TestErrorRecoveryPanicNonError(t *testing.T) {
+func TestErrorRecoveryPanicNonError(t *testing.T) {
 	func() {
 		defer func() {
 			info := events.NewErrorInfoFromPanic(recover())
@@ -76,7 +75,7 @@ func (errorSuite) TestErrorRecoveryPanicNonError(t *testing.T) {
 	}()
 }
 
-func (errorSuite) TestErrorRecoveryPanicError(t *testing.T) {
+func TestErrorRecoveryPanicError(t *testing.T) {
 	err := errors.New("test error")
 	func() {
 		defer func() {
@@ -102,7 +101,7 @@ func (c customError) MarshalLog(addField func(k string, v interface{})) {
 	addField("other_field", "custom field")
 }
 
-func (errorSuite) TestCustomErrorLoginfo(t *testing.T) {
+func TestCustomErrorLoginfo(t *testing.T) {
 	info := events.NewErrorInfo(customError{})
 	if info.Custom == nil {
 		t.Fatal("no custom marshaler")
@@ -124,7 +123,7 @@ func (errorSuite) TestCustomErrorLoginfo(t *testing.T) {
 	}
 }
 
-func (errorSuite) TestNestedErrorLogInfo(t *testing.T) {
+func TestNestedErrorLogInfo(t *testing.T) {
 	inner := errors.New("inner error")
 	outer := fmt.Errorf("outer error: %w", inner)
 
@@ -154,7 +153,7 @@ func (errorSuite) TestNestedErrorLogInfo(t *testing.T) {
 		"error.message":       "outer error",
 		"error.cause.kind":    "cause",
 		"error.cause.message": "inner error",
-		"error.cause.stack":   differs.StackLike("gobox/pkg/events/errgobox_test.go:000 `events_test.errorSuite.TestNestedErrorLogInfo`"),
+		"error.cause.stack":   differs.StackLike("gobox/pkg/events/error_test.go:000 `events_test.TestNestedErrorLogInfo`"),
 	}
 	if diff := cmp.Diff(want, got, differs.Custom()); diff != "" {
 		t.Error("custom error mismatched", diff)

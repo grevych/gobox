@@ -14,9 +14,7 @@ import (
 	"github.com/grevych/gobox/pkg/log"
 )
 
-type eventsSuite struct{}
-
-func (eventsSuite) TestHTTPRequest(t *testing.T) {
+func TestHTTPRequest(t *testing.T) {
 	req, err := http.NewRequest("GET", "http://localhost/myendpoint", http.NoBody)
 	if err != nil {
 		t.Fatal("Unexpected err", err)

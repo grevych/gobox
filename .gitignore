@@ -29,44 +29,11 @@ TAGS
 bin/
 dist/
 
-# Don't. Commit. Vendor. Or other package manager dep directories
-node_modules
-vendor
-
-# Fetched by make
-concourse/jsonnet-libs
-
-# pulumi secrets, obtained from vault
-Pulumi.*.yaml
-
 # terraform
 .terraform
 
 # macOS
 .DS_Store
 
-# Ruby gRPC client
-*.gem
-
-# bootstrap libs
-.bootstrap
-
 # CircleCI cache version
 /cache-version.txt
-
-# DevSpace files
-/.devspace
-/deployments/gobox.yaml
-
-# Documentation output
-/apidocs
-
-# Terraform lock files
-.terraform.lock.hcl
-
-### Start ignores inserted by other modules
-### End ignores inserted by other modules
-
-## <<Stencil::Block(extras)>>
-
-## <</Stencil::Block>>
