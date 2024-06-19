@@ -58,21 +58,21 @@ type Closer interface {
 	Close(ctx context.Context) error
 }
 
-// Tasks runs tasks
-type Tasks struct {
+// TaskGroup is an asyncronous task runner that wraps a WaitGroup
+type TaskGroup struct {
 	Name string
 	sync.WaitGroup
 }
 
-// NewTasks creates new instance of Tasks
-func NewTasks(name string) *Tasks {
-	return &Tasks{Name: name}
+// NewTaskGroup creates new instance of TaskGroup
+func NewTaskGroup(name string) *TaskGroup {
+	return &TaskGroup{Name: name}
 }
 
 // Run executes a single asynchronous task.
 //
 // It creates a new trace for the task and passes through deadlines.
-func (t *Tasks) Run(ctx context.Context, r Runner) {
+func (t *TaskGroup) Run(ctx context.Context, r Runner) {
 	t.WaitGroup.Add(1)
 	go func() {
 		defer t.WaitGroup.Done()
@@ -86,7 +86,7 @@ func (t *Tasks) Run(ctx context.Context, r Runner) {
 
 // Loop repeatedly executes the provided task until it returns false
 // or the context is canceled.
-func (t *Tasks) Loop(ctx context.Context, r Runner) {
+func (t *TaskGroup) Loop(ctx context.Context, r Runner) {
 	run := func(ctx context.Context) bool {
 		ctx2 := trace.StartSpan(ctx, t.Name)
 		defer trace.End(ctx2)
@@ -109,22 +109,13 @@ func (t *Tasks) Loop(ctx context.Context, r Runner) {
 }
 
 // Default is the default runner
-var Default = NewTasks("async.run")
+var Default = NewTaskGroup("async.run")
 
 // Run executes a single asynchronous task.
 //
 // It creates a new trace for the task and passes through deadlines.
 func Run(ctx context.Context, r Runner) {
 	Default.Run(ctx, r)
-}
-
-// RunBackground executes a single asynchronous task with background context
-//
-// It creates a new trace for the task and passes through deadlines.
-//
-// Deprecated: Please only use Run - you should always be aware of and control your context.
-func RunBackground(_ context.Context, r Runner) {
-	Run(context.Background(), r)
 }
 
 // RunClose closes any references a runner might be using
