@@ -77,6 +77,8 @@ func devReader(fallback cfg.Reader) cfg.Reader { //nolint:deadcode,unused // Why
 			filepath.Join(u.HomeDir, ".gobox", fileName),
 			filepath.Join(workingDir, info.Name, fileName),
 			filepath.Join(workingDir, fileName),
+			// mono repo setup
+			filepath.Join(workingDir, "config", fileName),
 		}
 
 		var b []byte
