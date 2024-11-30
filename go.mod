@@ -4,6 +4,7 @@ go 1.23.3
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
+	github.com/KimMachineGun/automemlimit v0.6.1
 	github.com/charmbracelet/log v0.4.0
 	github.com/go-git/go-billy/v5 v5.5.0
 	github.com/go-git/go-git/v5 v5.12.0
@@ -14,6 +15,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.19.0
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/zalando/go-keyring v0.2.4
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.46.1
@@ -23,6 +25,7 @@ require (
 	go.opentelemetry.io/otel/metric v1.26.0
 	go.opentelemetry.io/otel/sdk v1.26.0
 	go.opentelemetry.io/otel/trace v1.26.0
+	go.uber.org/automaxprocs v1.6.0
 	golang.org/x/crypto v0.23.0
 	golang.org/x/sync v0.7.0
 	golang.org/x/term v0.20.0
@@ -35,14 +38,20 @@ require (
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/charmbracelet/lipgloss v0.10.0 // indirect
+	github.com/cilium/ebpf v0.9.1 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
+	github.com/containerd/cgroups/v3 v3.0.1 // indirect
+	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/creack/pty v1.1.21 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/docker/go-units v0.4.0 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/hashicorp/go-hclog v1.0.0 // indirect
+	github.com/opencontainers/runtime-spec v1.0.2 // indirect
+	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58 // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/skeema/knownhosts v1.2.2 // indirect
