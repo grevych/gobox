@@ -1,7 +1,6 @@
 // Copyright 2022 Outreach Corporation. All Rights Reserved.
 
 //go:build gobox_dev || gobox_test || gobox_e2e
-// +build gobox_dev gobox_test gobox_e2e
 
 // Description: Provides configuration readers for various environments
 
@@ -67,10 +66,19 @@ func devReader(fallback cfg.Reader) cfg.Reader { //nolint:deadcode,unused // Why
 			return nil, err
 		}
 
+		workingDir, err := os.Getwd()
+		if err != nil {
+			return nil, err
+		}
+
 		info := app.Info()
 		lookupPaths := []string{
-			filepath.Join(u.HomeDir, ".outreach", info.Name, fileName),
-			filepath.Join(u.HomeDir, ".outreach", fileName),
+			filepath.Join(u.HomeDir, ".gobox", info.Name, fileName),
+			filepath.Join(u.HomeDir, ".gobox", fileName),
+			filepath.Join(workingDir, info.Name, fileName),
+			filepath.Join(workingDir, fileName),
+			// mono repo setup
+			filepath.Join(workingDir, "config", fileName),
 		}
 
 		var b []byte
