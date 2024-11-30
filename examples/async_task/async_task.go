@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/grevych/gobox/pkg/async"
+	"github.com/grevych/gobox/pkg/serviceactivities/shutdown"
 )
 
 // AsyncTask is an asynchronous task runner for functions of type Task.
@@ -28,10 +29,10 @@ func NewAsyncTask(f Task, replicas int) *AsyncTask {
 // number of executed tasks is defined by the replicas parameter.
 func (at *AsyncTask) Run(ctx context.Context) {
 	ctx2, cancel := context.WithCancel(ctx)
-	shutdown := async.NewShutdown()
+	shutdownSvc := shutdown.New()
 
 	go func() {
-		if err := shutdown.Run(ctx2); err != nil {
+		if err := shutdownSvc.Run(ctx2); err != nil {
 			cancel()
 		}
 	}()
@@ -49,5 +50,7 @@ func (at *AsyncTask) Run(ctx context.Context) {
 	}
 
 	at.Wait()
-	shutdown.Close(ctx)
+
+	// service is already closed
+	shutdownSvc.Close(ctx)
 }
