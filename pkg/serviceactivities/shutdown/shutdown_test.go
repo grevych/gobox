@@ -1,20 +1,20 @@
-package async_test
+package shutdown
 
 import (
 	"context"
+	"errors"
 	"sync"
 	"syscall"
 	"testing"
 	"time"
 
-	"github.com/grevych/gobox/pkg/async"
 	"gotest.tools/v3/assert"
 )
 
-func TestShutdown_RuntWithContextDone(t *testing.T) {
+func TestServiceActivity_RuntWithContextDone(t *testing.T) {
 	var shutdownErr error
 	wg := sync.WaitGroup{}
-	shutdown := async.NewShutdown()
+	shutdown := New()
 	ctx, cancel := context.WithCancel(context.Background())
 
 	wg.Add(1)
@@ -31,10 +31,10 @@ func TestShutdown_RuntWithContextDone(t *testing.T) {
 	assert.ErrorContains(t, shutdownErr, "context canceled")
 }
 
-func TestShutdown_RuntWithSignal(t *testing.T) {
+func TestServiceActivity_RuntWithSignal(t *testing.T) {
 	var shutdownErr error
 	wg := sync.WaitGroup{}
-	shutdown := async.NewShutdown()
+	shutdown := New()
 
 	wg.Add(1)
 	go func() {
@@ -47,13 +47,17 @@ func TestShutdown_RuntWithSignal(t *testing.T) {
 
 	wg.Wait()
 
-	assert.ErrorContains(t, shutdownErr, "signal hangup")
+	assert.ErrorContains(t, shutdownErr, "process has shutdown")
+
+	var sigErr SignalError
+	assert.Assert(t, errors.As(shutdownErr, &sigErr))
+	assert.Assert(t, sigErr.Signal == syscall.SIGHUP)
 }
 
-func TestShutdown_RuntWithClose(t *testing.T) {
+func TestServiceActivity_RuntWithClose(t *testing.T) {
 	var shutdownErr error
 	wg := sync.WaitGroup{}
-	shutdown := async.NewShutdown()
+	shutdown := New()
 	ctx := context.Background()
 
 	wg.Add(1)
