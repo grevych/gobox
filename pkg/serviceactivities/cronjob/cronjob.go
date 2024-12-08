@@ -79,6 +79,12 @@ func (sa *ServiceActivity) Run(ctx context.Context) error {
 	// Wait for added jobs to finish
 	<-ctx2.Done()
 
+	// Close the job task
+	err2 := async.RunClose(ctx, job)
+	if err == nil {
+		err = err2
+	}
+
 	return err
 }
 
