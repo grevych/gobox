@@ -28,6 +28,7 @@ TAGS
 # Releases and other binaries
 bin/
 dist/
+node_modules/
 
 # terraform
 .terraform
