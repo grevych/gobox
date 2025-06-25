@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -128,25 +129,25 @@ func TestMutexWithContext_ExtraUnlock(t *testing.T) {
 func TestTaskGroup_RunWithError(t *testing.T) {
 	ctx := context.Background()
 
-	count := 0
+	counter := atomic.Int32{}
 	tg := async.TaskGroup{Name: "test"}
 	tg.Run(ctx, async.Func(func(ctx context.Context) error {
-		count = 1
+		counter.Add(1)
 		return errors.New("some error")
 	}))
 
 	tg.Wait()
-	assert.Equal(t, count, 1)
+	assert.Equal(t, int32(1), counter.Load())
 }
 
 func TestTaskGroup_LoopWithError(t *testing.T) {
 	ctx := context.Background()
 
-	count := 0
+	counter := atomic.Int32{}
 	tg := async.TaskGroup{Name: "test"}
 	tg.Loop(ctx, async.Func(func(ctx context.Context) error {
-		if count < 3 {
-			count++
+		if counter.Load() < 3 {
+			counter.Add(1)
 		} else {
 			return errors.New("some error")
 		}
@@ -154,22 +155,22 @@ func TestTaskGroup_LoopWithError(t *testing.T) {
 	}))
 
 	tg.Wait()
-	assert.Equal(t, count, 3)
+	assert.Equal(t, int32(3), counter.Load())
 }
 
 func TestTaskGroup_LoopWithContextCanceled(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 
-	count := 0
+	counter := atomic.Int32{}
 	tg := async.TaskGroup{Name: "test"}
 	tg.Loop(ctx, async.Func(func(ctx context.Context) error {
-		count++
+		counter.Add(1)
 		return nil
 	}))
 
 	go func() {
 		for {
-			if count > 3 {
+			if counter.Load() > 3 {
 				cancel()
 				break
 			}
@@ -187,7 +188,6 @@ func ExampleTaskGroup_run() {
 	tasks := async.TaskGroup{Name: "example"}
 	tasks.Run(ctx, async.Func(func(ctx context.Context) error {
 		fmt.Println("Run example")
-
 		return nil
 	}))
 
@@ -201,11 +201,11 @@ func ExampleLoop() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	count := 0
+	counter := atomic.Int32{}
 	async.Loop(ctx, async.Func(func(ctx context.Context) error {
-		if count < 3 {
-			count++
-			fmt.Println("count", count)
+		if counter.Load() < 3 {
+			counter.Add(1)
+			fmt.Println("count", counter.Load())
 		} else {
 			<-ctx.Done()
 		}
@@ -226,12 +226,12 @@ func ExampleTaskGroup_loop() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	count := 0
+	counter := atomic.Int32{}
 	tasks := async.TaskGroup{Name: "example"}
 	tasks.Loop(ctx, async.Func(func(ctx context.Context) error {
-		if count < 3 {
-			count++
-			fmt.Println("count", count)
+		if counter.Load() < 3 {
+			counter.Add(1)
+			fmt.Println("count", counter.Load())
 		} else {
 			<-ctx.Done()
 		}

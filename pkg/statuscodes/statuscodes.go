@@ -73,7 +73,7 @@ const (
 	DeadlineExceeded StatusCode = 804
 )
 
-//go:generate ../../scripts/shell-wrapper.sh gobin.sh golang.org/x/tools/cmd/stringer@v0.1.12 -type=StatusCode
+//go:generate go run golang.org/x/tools/cmd/stringer@latest -type=StatusCode
 
 // StatusCodes map directly into StatusCategories by the numeric range of the status code.  See StatusCode comments
 // for more details.
@@ -85,7 +85,7 @@ const (
 	CategoryServerError StatusCategory = 3
 )
 
-//go:generate ../../scripts/shell-wrapper.sh gobin.sh golang.org/x/tools/cmd/stringer@v0.1.12 -type=StatusCategory
+//go:generate go run golang.org/x/tools/cmd/stringer@latest -type=StatusCategory
 
 func (re StatusCode) Category() StatusCategory {
 	if re >= 600 && re <= 699 {
