@@ -8,11 +8,3 @@ plugins:
           release: patch
         - type: perf
           release: patch
-
-  # This creates fancy release notes in our Github release
-  - "@semantic-release/release-notes-generator"
-  - "@semantic-release/github"
-
-  ## <<Stencil::Block(customReleasePlugins)>>
-
-  ## <</Stencil::Block>>
