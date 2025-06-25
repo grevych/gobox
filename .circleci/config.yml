@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   go: circleci/go@3.0.2
+  node: circleci/node@7.1.0
 
 parameters:
   rebuild_cache:
@@ -13,7 +14,7 @@ cfg: &cfg
 
 # Branches used for releasing code, pre-release or not
 release_branches: &release_branches
-  - "main"
+  - main
 
 jobs:
   build:
@@ -51,12 +52,25 @@ jobs:
           project-path: ~/project
           publish-release: false
           validate-yaml: true
+  versioning:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install:
+          node-version: "latest"
+      - node/install-packages
+      - run:
+          name: Generate Tag Version
+          command: npx semantic-release --ci --debug
   release:
     executor:
       name: go/default
       tag: "1.22.4"
     steps:
       - checkout
+      - run:
+          command: echo $GITHUB_TOKEN
       - go/install-goreleaser
       - go/goreleaser-release:
           project-path: ~/project
@@ -84,15 +98,22 @@ workflows:
   main:
     jobs:
       - test
-      - release:
+      - versioning:
           filters:
             branches:
               only: *release_branches
+          serial-group: << pipeline.project.slug >>/deploy-group
           requires:
             - test
+      - release:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*(-.*)*/
       - release_dryrun:
           filters:
             branches:
-              ignore: *release_branches
+              only: *release_branches
           requires:
             - test
